@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<title>Welcome <%= name %>!</title>
+</head>
+<body>
+	<h1>Welcome <%= name %>!</h1>
+	<form action="/login" method="POST">
+		<h3>Username</h3>
+		<input type="text" name="username"/>
+		<h3>Password</h3>
+		<input type="password" name="password"/>
+		<p>
+			<input type="submit" value="Log In (not really...)"/>
+		</p>
+	</form>
+</body>
+</html>

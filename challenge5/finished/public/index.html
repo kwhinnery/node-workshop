@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Chat Example</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:3000');
+		socket.on('chat', function (data) {
+			$('textarea').val($('textarea').val()+data.message+'\n');
+		});
+
+		// Handle UI
+		$(function() {
+			$('button').on('click', function() {
+				console.log($('input').val());
+				socket.emit('chat', {
+					message:$('input').val()
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Simple Chat</h1>
+	<textarea style="height:300px;width:500px;"></textarea>
+	<p>
+		<input type="text"/>
+		<button>Send Chat Message</button>
+	</p>
+</body>
+</html>

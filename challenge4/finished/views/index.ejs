@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Little Bloggie</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container" style="margin-top:10px;">
+		<div class="navbar">
+		 	<div class="navbar-inner">
+		    	<a class="brand" href="#">My Little Bloggie</a>
+		    	<ul class="nav">
+		      		<li class="active"><a href="/">All Posts</a></li>
+		      		<li><a href="/new">Create Post</a></li>
+		    	</ul>
+		  	</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<% posts.forEach(function(post) { %>
+		      		<div>
+		      			<h1><%= post.title %></h1>
+		      			<p>
+		      				<%= post.content %>
+		      			</p>
+		      		</div>
+		      	<% }) %>
+			</div>
+	  	</div>
+	</div>
+</body>
+</html>

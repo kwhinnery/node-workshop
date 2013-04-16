@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Node.js Bootcamp</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="A beginner-level introduction to node.js">
+		<meta name="author" content="Kevin Whinnery">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -52,8 +52,18 @@
 					    <li>Why node.js?</li>
 					    <li>Node JavaScript Runtime Basics</li>
 					    <li>Routing and templating with Express</li>
-					    <li>Persistence with MongoDB and Mongoose</li>
+					    <li>Persistence Options</li>
+					    <li>Realtime Apps with Socket.io</li>
 					    <li>Deploying Node Applications</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>doing is for doers</h1>
+					<ul>
+					    <li>This is a workshop for DOers</li>
+					    <li>Lots of live code</li>
+					    <li>Lots of hands-on experimentation</li>
 					</ul>
 				</section>
 
@@ -74,8 +84,224 @@
 						</ul>
 					</section>
 					<section>
-						
+						<h2>Evented By Default</h2>
+						<ul>
+						    <li>Lots of scalability problems caused by concurrency</li>
+						    <li>node.js programs are evented by default</li>
+						    <li>Makes node.js apps a great fit for real-time, high concurrency apps</li>
+						    <li>Note: possible to do in other languages (Event Machine, Tornado)</li>
+						</ul>
 					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>node.js basics</h1>
+					</section>
+					<section>
+						<h2>What is node.js?</h2>
+						<ul>
+							<li>v8 JavaScript runtime</li>
+						    <li>Event driven</li>
+						    <li>Non-blocking stabndard libraries</li>
+						    <li>Extensible via C/C++ add-ons</li>
+						    <li>Provides a package manager and module system for JS/native extensions</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What node is not</h2>
+						<ul>
+						    <li>A framework like Django or Rails</li>
+						    <li>A new programming language</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Interactive Mode</h2>
+						<ul>
+						    <li>Great for quick tests</li>
+						    <li>[Demo - node console]</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Standard libraries</h2>
+						<ul>
+						    <li>Async by default</li>
+						    <li>Low level</li>
+						    <li>HTTP is first class citizen</li>
+						    <li>[Demo - hello world]</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Developing and Debugging</h2>
+						<ul>
+						    <li>Lots of different choices</li>
+						    <li>Supervisor (faster cycles)</li>
+						    <li>node-inspector (step-through debugging)</li>
+						    <li>[Demo - supervisor and debugging]</li>
+						</ul>
+					</section>
+					<section>
+						<h2>CommonJS Modules</h2>
+						<ul>
+						    <li>Prevents pollution of the global scope</li>
+						    <li>Two Styles of module development</li>
+						    <li>[Demo - your own local modules]</li>
+						</ul>
+					</section>
+					<section>
+						<h2>npm</h2>
+						<ul>
+						    <li>node's package manager (ruby gems)</li>
+						    <li>handles and resolves dependencies (Bundler)</li>
+						    <li>27,000+ modules available today (easy to publish)</li>
+						    <li>[Demo - npm init and shameless plug]</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Challenge One</h1>
+					<p>and</p>
+					<h1>Challenge Two</h1>
+					<p>
+						<a href="http://github.com/kwhinnery/node-workshop">get the code</a>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>Routing and templating with express</h1>
+					</section>
+					<section>
+						<h2>Express at a high level</h2>
+						<ul>
+							<li>Based on Connect (a bit like Rack)</li>
+						    <li>De facto standard framework of node web apps</li>
+						    <li>Not everyone is happy about the above :)</li>
+						    <li>Minimalistic, inspired by Sinatra</li>
+						    <li>Supports a variety of middleware</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Routes</h2>
+						<ul>
+						    <li>Respond to HTTP requests with a callback</li>
+						    <li>Supports variable placement in routes</li>
+						    <li>Easy to serve JSON</li>
+						    <li>[Demo - some basic routing and HTTP testing in Chrome]</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Middleware</h2>
+						<ul>
+							<li>Some useful built in middleware (like bodyParser)</li>
+						    <li>Useful for preprocessing requests</li>
+						    <li>Authentication/Authorization</li>
+						    <li>[Demo - some simple middleware, and how to use it]</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Challenge Three</h1>
+				</section>
+
+				<section>
+					<section>
+						<h1>Persistence</h1>
+					</section>
+					<section>
+						<h2>Popular node.js options</h2>
+						<ul>
+						    <li>SQL libraries supported, but not especially popular</li>
+						    <li>Document stores preferred, good fit for JS</li>
+						    <li>CouchDB - nano by Nuno Job</li>
+						    <li>MongoDB - mongodb by 10gen</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Mongoose</h2>
+						<ul>
+						    <li>Object Document Mapper (ODM)</li>
+						    <li>Most popular ODM in npm</li>
+						    <li>Docs are somewhat less than awesome</li>
+						    <li>Nice high level APIs</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Cop out</h2>
+						<p>I am actually not a MongoDB expert, but I am learning and finding it pretty easy</p>
+					</section>
+					<section>
+						<h2>Hosted MongoDB</h2>
+						<ul>
+						    <li>MongoHQ (I like their interface, plus 512MB free storage)</li>
+						    <li>Mongo Lab</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Challenge Four</h1>
+				</section>
+
+				<section>
+					<section>
+						<h1>Real time apps with socket.io</h1>
+					</section>
+					<section>
+						<h2>Socket.io at a high level</h2>
+						<ul>
+						    <li>Awesomely simple API and setup (one you figure it out)</li>
+						    <li>Super fast client push</li>
+						    <li>Broadcast to all connected clients</li>
+						    <li>Works well in tandem with Express</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Challenge Five</h1>
+				</section>
+
+				<section>
+					<section>
+						<h1>Deploying node apps</h1>
+					</section>
+					<section>
+						<h2>Typical production setups</h2>
+						<ul>
+						    <li>HTTP traffic fronted by Apache/Nginx (static content and load balancing)</li>
+						    <li>Several node processes working in a pool</li>
+						    <li>Keep an eye on <a href="http://nodejs.org/api/cluster.html">cluster</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>VPS Options</h2>
+						<ul>
+						    <li>Have had good experiences with Linode</li>
+						    <li>Use the Node KO <a href="http://www.linode.com/stackscripts/view/?StackScriptID=3127">stack script</a></li>
+						    <li><a href="https://github.com/nko2/website/blob/master/designs/blog/14-deploying-to-linode.md">More info</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>PaaS Options</h2>
+						<ul>
+						    <li>Heroku</li>
+						    <li>Nodejitsu</li>
+						    <li>AppFog</li>
+						    <li>Red Hat OpenShift</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h1>Challenge Six</h1>
+				</section>
+
+				<section>
+					<h1>@kevinwhinnery</h1>
+					<h3>kwhinnery@twilio.com</h3>
 				</section>
 
 			</div>

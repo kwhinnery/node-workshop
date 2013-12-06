@@ -1,11 +1,11 @@
 var Person = require('./Person'),
-	logger = require('./logger');
+    logger = require('./logger');
 
 var kevin = new Person({
-	firstName:'Kevin',
-	lastName:'Whinnery',
-	age:31,
-	knowsKungFu:true
+    firstName:'Kevin',
+    lastName:'Whinnery',
+    age:31,
+    knowsKungFu:true
 });
 
 logger.info('Does '+ kevin.firstName +' know kung-fu?');

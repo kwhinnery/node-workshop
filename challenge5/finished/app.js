@@ -24,9 +24,24 @@ var io = require('socket.io').listen(server);
 
 // Handle socket traffic
 io.sockets.on('connection', function (socket) {
-	// Relay chat data to all clients
-	socket.on('chat', function(data) {
-		socket.emit('chat',data);
-		socket.broadcast.emit('chat', data);
-	});
+    
+    // Set the nickname property for a given client
+    socket.on('nick', function(nick) {
+        socket.set('nickname', nick);
+    });
+
+    // Relay chat data to all clients
+    socket.on('chat', function(data) {
+        socket.get('nickname', function(err, nick) {
+            var nickname = err ? 'Anonymous' : nick;
+
+            var payload = {
+                message: data.message,
+                nick: nickname
+            };
+
+            socket.emit('chat',payload);
+            socket.broadcast.emit('chat', payload);
+        });
+    });
 });

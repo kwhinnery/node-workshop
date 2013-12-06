@@ -7,8 +7,8 @@ mongoose.connect('CHANGEME');
 // Create a database schema for our Post object, which will describe both it's
 // data and it's behavior.
 var postSchema = mongoose.Schema({
-	title:String,
-	content:String
+    title:String,
+    content:String
 });
 
 // Create a model object constructor that will have ODM functionality like .save()...

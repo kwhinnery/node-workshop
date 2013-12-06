@@ -1,32 +1,42 @@
 <html>
 <head>
-	<title>Chat Example</title>
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script>
-		// Replace IP address with your local machine address/server name
-		var socket = io.connect('http://192.168.1.2:3000');
-		socket.on('chat', function (data) {
-			$('textarea').val($('textarea').val()+data.message+'\n');
-		});
+    <title>Chat Example</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        var socket = io.connect();
 
-		// Handle UI
-		$(function() {
-			$('button').on('click', function() {
-				console.log($('input').val());
-				socket.emit('chat', {
-					message:$('input').val()
-				});
-			});
-		});
-	</script>
+        socket.on('chat', function (data) {
+            var msg = data.nick+': '+data.message;
+            $('textarea').val($('textarea').val()+msg+'\n');
+        });
+
+        // Handle UI
+        $(function() {
+            // Set nickname
+            $('#nick').on('click', function() {
+                socket.emit('nick', $('#nickText').val());
+            });
+
+            // Send chat message
+            $('#chat').on('click', function() {
+                socket.emit('chat', {
+                    message:$('#chatText').val()
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-	<h1>Simple Chat</h1>
-	<textarea style="height:300px;width:500px;"></textarea>
-	<p>
-		<input type="text"/>
-		<button>Send Chat Message</button>
-	</p>
+    <h1>Simple Chat</h1>
+    <p>
+        <input id="nickText" type="text" placeholder="e.g. MissFunky1981"/>
+        <button id="nick">Set Nickname</button>
+    </p>
+    <textarea style="height:300px;width:500px;"></textarea>
+    <p>
+        <input id="chatText" type="text"/>
+        <button id="chat">Send Chat Message</button>
+    </p>
 </body>
 </html>

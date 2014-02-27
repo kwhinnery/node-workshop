@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Node.js Bootcamp</title>
+        <title>Node.js Workshop</title>
 
         <meta name="description" content="A beginner-level introduction to node.js">
         <meta name="author" content="Kevin Whinnery">
@@ -38,7 +38,7 @@
             <div class="slides">
 
                 <section>
-                    <h1>node.js bootcamp</h1>
+                    <h1>node.js workshop</h1>
                     <h3>the re-nodening</h3>
                     <p>
                         <small>Presented by <a href="http://www.kevinwhinnery.com">Kevin Whinnery</a> / 
@@ -54,7 +54,8 @@
                         <li>Routing and templating with Express</li>
                         <li>Persistence Options</li>
                         <li>Realtime Apps with Socket.io</li>
-                        <li>Deploying Node Applications</li>
+                        <li>Sharing Code and Culture with the Client with Browserify</li>
+                        <li>Further Reading</li>
                     </ul>
                 </section>
 
@@ -191,7 +192,7 @@
                             <li>De facto standard framework of node web apps</li>
                             <li>Minimalistic, unopinionated</li>
                             <li>Supports a variety of middleware</li>
-                            <li>Alternatives: hapi, restify, geddy</li>
+                            <li>Alternatives: hapi, restify, geddy, koa</li>
                         </ul>
                     </section>
                     <section>
@@ -277,11 +278,19 @@
                     <section>
                         <h2>Socket.io at a high level</h2>
                         <ul>
-                            <li>Thin wrapper around WebSockets</li>
-                            <li>Super fast client push</li>
-                            <li>Broadcast to all connected clients</li>
-                            <li>Works well in tandem with Express</li>
-                            <li>Documentation: less than awesome</li>
+                            <li>Thin wrapper around <a href="http://www.html5rocks.com/en/tutorials/websockets/basics/">WebSockets</a></li>
+                            <li>Works in tandem with an HTTP Server</li>
+                            <li>Documentation: less than awesome, <a href="https://github.com/learnboost/socket.io/wiki">wiki is better</a> than site</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Key Features</h2>
+                        <ul>
+                            <li>Client/Server Push</li>
+                            <li>Broadcast</li>
+                            <li>Client "session" information</li>
+                            <li>Message namespaces</li>
+                            <li>Plain ol' WebSockets API as well</li>
                         </ul>
                     </section>
                 </section>
@@ -292,14 +301,49 @@
 
                 <section>
                     <section>
-                        <h1>Deploying node apps</h1>
+                        <h1>Sharing Code and Culture with Browserify</h1>
                     </section>
                     <section>
-                        <h2>Typical production setups</h2>
+                        <h2>What is Browserify?</h2>
                         <ul>
+                            <li>node-style require in the browser!</li>
+                            <li>self-contained node module environment</li>
+                            <li>use local, core, or npm-installed modules</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Why would I want to use Browserify?</h2>
+                        <ul>
+                            <li>Helps you write modular code on the client</li>
+                            <li>no futzing with client-side script loading</li>
+                            <li>share client and server code</li>
+                            <li>Have the same code style, package management, and module system as server! Why have two different paradigms?</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Fun Browserify Features</h2>
+                        <ul>
+                            <li>Provides browser shims for lots of node core</li>
+                            <li>can provide modules with alternate entry points when used by browserify</li>
+                            <li>Source Maps</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>Challenge Six</h1>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>Further Reading</h1>
+                    </section>
+                    <section>
+                        <h2>Moving To Production</h2>
+                        <ul>
+                            <li><a href="http://www.joyent.com/developers/node">Node In Production (Joyent)</a></li>
                             <li>HTTP traffic fronted by Apache/Nginx (static content and load balancing)</li>
-                            <li>Several node processes working in a pool</li>
-                            <li>Cluster for multi-core: <a href="http://nodejs.org/api/cluster.html">cluster</a></li>
+                            <li>One node process per CPU core: <a href="http://nodejs.org/api/cluster.html">cluster</a></li>
                         </ul>
                     </section>
                     <section>
@@ -308,6 +352,7 @@
                             <li>Have had good experiences with Linode</li>
                             <li>Use the Node KO <a href="http://www.linode.com/stackscripts/view/?StackScriptID=3127">stack script</a></li>
                             <li><a href="https://github.com/nko2/website/blob/master/designs/blog/14-deploying-to-linode.md">More info</a></li>
+                            <li>Also hear good things about Digital Ocean</li>
                         </ul>
                     </section>
                     <section>
@@ -319,10 +364,21 @@
                             <li>Red Hat OpenShift</li>
                         </ul>
                     </section>
-                </section>
-
-                <section>
-                    <h1>Challenge Six</h1>
+                    <section>
+                        <h2>Streams</h2>
+                        <ul>
+                            <li>Foudational component for many APIs</li>
+                            <li><a href="https://github.com/substack/stream-handbook">Stream Handbook</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>More Exercises and Reinforcement</h2>
+                        <ul>
+                            <li><a href="http://nodeschool.io/">nodeschool.io</a></li>
+                            <li>Learn You Node for Much Win!</li>
+                            <li>Streams Adventure</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <section>

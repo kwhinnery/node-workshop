@@ -28,3 +28,8 @@ Create an API for listing blog posts as JSON, secured with HTTP basic.
 
 ### Challenge Five: Chatting with Socket.io
 Create a simple chat room application using socket.io.  Starting with the simple chat example, add the ability for each user to add a nickname for themselves.  You will need to store some "session" information about each socket connection.  Consult the [socket.io docs](http://socket.io/#how-to-use) for guidance on how to do this.
+
+### Challenge Six: Browserify
+Install the browserify package from npm globally - `npm install -g browserify`. The file "browser.js" contains node.js-style code that uses both core node and third party modules from npm.  Use the browserify command line utility to create a browser-ready version of `browser.js` called `commandline.js`, which should reside in the "public" directory of the project.
+
+You will also want to check out the npm module `browserify-middleware`.  This module works with express to always serve the most recent version of your browserified source, and includes source maps so you can view and debug individual files.  In `app.js`, figure out how to use browserify-middleware to serve up a file called `middleware.js` to the browser, which contains the browserified contents of `browser.js`.

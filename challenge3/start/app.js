@@ -39,7 +39,7 @@ app.get('/', session, function(request, response) {
     // TODO: How do we render the "index.ejs" template from the /views directory?
 });
 
-app.post('/login', function(request, response) {\
+app.post('/login', function(request, response) {
     // Update our session state with the undername submitted by the form
     sessionInfo.name = request.body.username;
 

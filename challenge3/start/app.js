@@ -24,7 +24,8 @@ app.configure('development', function(){
 });
 
 // Store "session" information.  To see how to store sessions in a cookie, check out
-// https://gist.github.com/visionmedia/1491756
+// https://gist.github.com/OdinsHat/32795c8a595e57c6cf2d
+// Note the above is for Express 3.x
 var sessionInfo = {
     name:'Guest'
 };

@@ -1,6 +1,6 @@
 // Module dependencies
-var express = require('express'), 
-    http = require('http'), 
+var express = require('express'),
+    http = require('http'),
     path = require('path');
 
 // Create an express app
@@ -25,6 +25,7 @@ app.configure('development', function(){
 
 // Store "session" information.  To see how to store sessions in a cookie, check out
 // https://gist.github.com/visionmedia/1491756
+
 var sessionInfo = {
     name:'Guest'
 };
@@ -32,11 +33,14 @@ var sessionInfo = {
 // Create session middleware
 var session = function(request, response, next) {
     // TODO: How do we store session data on the request?  How do we continue with the request chain?
+    request.sessionInfo = sessionInfo;
+    next();
 };
 
 // Handle GET request to root URL
 app.get('/', session, function(request, response) {
     // TODO: How do we render the "index.ejs" template from the /views directory?
+    response.render('index', request.sessionInfo);
 });
 
 app.post('/login', function(request, response) {
@@ -44,7 +48,7 @@ app.post('/login', function(request, response) {
     sessionInfo.name = request.body.username;
 
     // TODO: How do we send the user back to "/" after the request?
-    response.CHANGEME('/');
+    response.redirect('/');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

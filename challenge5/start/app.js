@@ -1,7 +1,6 @@
-var express = require('express'), 
-    http = require('http'), 
-    path = require('path')
-    io = require('socket.io');
+var express = require('express'),
+    http = require('http'),
+    path = require('path');
 
 var app = express();
 
@@ -25,8 +24,22 @@ var io = require('socket.io').listen(server);
 // Handle socket traffic
 io.sockets.on('connection', function (socket) {
     // Relay chat data to all clients
+    socket.on('nick', function(nick) {
+        socket.set('nickname', nick)
+    });
+
     socket.on('chat', function(data) {
-        socket.emit('chat',data);
-        socket.broadcast.emit('chat', data);
+        socket.get('nickname', function(err, nick){
+            var nickname = nick === null ? 'Anonymous' : nick;
+
+            var payload = {
+                nick: nickname,
+                message: data.message
+            };
+
+            io.sockets.emit('chat', payload);
+        })
     });
 });
+
+

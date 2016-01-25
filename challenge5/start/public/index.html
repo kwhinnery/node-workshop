@@ -6,15 +6,20 @@
     <script>
         var socket = io.connect();
         socket.on('chat', function (data) {
-            $('textarea').val($('textarea').val()+data.message+'\n');
+            $('textarea').val($('textarea').val() + data.nick + ': ' + data.message + '\n');
         });
 
         // Handle UI
         $(function() {
-            $('button').on('click', function() {
-                console.log($('input').val());
+            $('#nickname').on('click', function() {
+                console.log($('#nickname-text').val());
+                socket.emit('nick', $('#nickname-text').val());
+            });
+
+            $('#chat-msg').on('click', function() {
+                console.log($('#chat-msg-text').val());
                 socket.emit('chat', {
-                    message:$('input').val()
+                    message:$('#chat-msg-text').val()
                 });
             });
         });
@@ -22,10 +27,14 @@
 </head>
 <body>
     <h1>Simple Chat</h1>
+    <p>
+        <input id="nickname-text" type="text"/>
+        <button id="nickname">Set Nickname</button>
+    </p>
     <textarea style="height:300px;width:500px;"></textarea>
     <p>
-        <input type="text"/>
-        <button>Send Chat Message</button>
+        <input id="chat-msg-text" type="text"/>
+        <button id="chat-msg">Send Chat Message</button>
     </p>
 </body>
 </html>

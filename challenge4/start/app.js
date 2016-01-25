@@ -1,5 +1,5 @@
-var express = require('express'), 
-    http = require('http'), 
+var express = require('express'),
+    http = require('http'),
     path = require('path'),
     Post = require('./Post');
 
@@ -21,11 +21,15 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
+var auth = express.basicAuth(function(username, password) {
+    return username === 'foo' && password === 'bar';
+});
+
 // Render our home page with all blog posts
 app.get('/', function(request, response) {
 
     // TODO: How do we get a list of all model objects using a mongoose model?
-    Post.CHANGEME(function(err, posts) {
+    Post.find(function(err, posts) {
         if (err) {
             response.send(500, 'There was an error - tough luck.');
         }
@@ -38,17 +42,36 @@ app.get('/', function(request, response) {
 });
 
 // Render a form to enter a new post
-app.get('/new', function(request, response) {
+app.get('/new', auth, function(request, response) {
     response.render('new', {});
 });
 
+app.get('/posts.json', function(request, response) {
+    Post.find(function(err, posts){
+        if(err) {
+            response.send(500, {
+                success: false
+            })
+        }
+        else {
+            response.send({
+                success: true,
+                posts: posts
+            })
+        }
+    })
+})
+
 // create a new blog post object
-app.post('/create', function(request, response) {
+app.post('/create', auth, function(request, response) {
     // TODO: Create and save a Post model
-    var post = CHANGEME();
+    var post = new Post( {
+        title: request.body.title,
+        content: request.body.content
+    });
 
     // TODO: Save the model
-    post.CHANGEME(function(err, model) {
+    post.save(function(err, model) {
         if (err) {
             response.send(500, 'There was an error - tough luck.');
         }

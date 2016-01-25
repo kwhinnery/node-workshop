@@ -1,4 +1,4 @@
-var express = require('express'), 
+var express = require('express'),
     http = require('http'),
     path = require('path'),
     browserify = require('browserify-middleware');
@@ -14,10 +14,12 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
+
 // Configure Browserify middleware
 var browserifySrc = path.join(process.cwd(), 'browser.js');
 // TODO: How do you use browserify-middleware to create
 // the "/middleware.js" file for the browser?
+app.use('/middleware.js', browserify(browserifySrc));
 
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port'));

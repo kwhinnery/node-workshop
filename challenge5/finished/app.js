@@ -33,15 +33,8 @@ io.sockets.on('connection', function (socket) {
     // Relay chat data to all clients
     socket.on('chat', function(data) {
         socket.get('nickname', function(err, nick) {
-            var nickname = err ? 'Anonymous' : nick;
-
-            var payload = {
-                message: data.message,
-                nick: nickname
-            };
-
-            socket.emit('chat',payload);
-            socket.broadcast.emit('chat', payload);
+            data.nick = nick || 'Anonymous';
+            io.sockets.emit('chat',data);
         });
     });
 });

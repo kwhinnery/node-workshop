@@ -4,6 +4,26 @@ var http = require('http'),
 
 http.createServer(function(request, response) {
 
+    fs.readFile('./data.csv', 'utf-8', function(err, data) {
+        var responseData = {};
+
+        var lines = data.split('\n');
+        lines.forEach(function(line) {
+            var parts = line.split(',');
+            responseData[parts[0]] = parts[1];
+        });
+
+        response.writeHead(200, {
+            'Content-Type':'application/json'
+        });
+        response.end(JSON.stringify(responseData));
+
+    });
+
+}).listen(3000);
+
+/* http.createServer(function(request, response) {
+
     // TODO: Find the ASYNCHRONOUS, NON-BLOCKING API for reading in a file.
     fs.CHANGE_ME('./data.csv', 'utf-8', function(err, data) {
         var responseData = {};
@@ -27,6 +47,8 @@ http.createServer(function(request, response) {
 
     });
 
-}).listen(3000);
+}).listen(3000); */
+
+
 
 console.log('node server running on port 3000');
